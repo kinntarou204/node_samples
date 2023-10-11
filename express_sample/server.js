@@ -18,6 +18,10 @@ app.get('/',(req,res)=>{
     res.send('Hello!!!!!!!')
 })
 
+app.get('/profil',(req,res)=>{
+    res.send('profile')
+})
+
 app.listen(PORT, HOST, () => {
     console.log(HOST)
     console.log(PORT)
