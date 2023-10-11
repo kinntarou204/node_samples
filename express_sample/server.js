@@ -1,35 +1,53 @@
-const express=require('express')
-const dotenv=require('dotenv')
+// expressモジュール読み込み
+const express = require('express')
+// dotenvモジュール読み込み
+const dotenv = require('dotenv')
 
+// dotenvの設定読み込み
 dotenv.config()
 const HOST = process.env.HOST
 const PORT = process.env.PORT
 
-console.log(HOST)
-console.log(PORT)
+// サーバ作成
+const app = express()
 
-const app=express()
-app.use(express.static(__dirname + '/public'))
+// ミドルウェアの設定
+// publicフォルダを静的コンテンツのフォルダに設定
+app.use(express.static(__dirname + './public'))
 
-app.get('/',(req,res)=>{
+// URLエンコード
+app.use(express.urlencoded({ extended: true }))
+
+// GETリクエストの処理
+app.get('/', (req, res) => {
+    // リクエストの処理
     console.log(req.body)
     console.log(req.url)
     console.log(req.query)
 
-    res.send('Hello!!!!!!!')
+    // レスポンスの処理
+    res.send('Hello!!!!!!')
 })
 
-app.get('/profil',(req,res)=>{
-    res.send('profile')
+app.get('/profile', (req, res) => {
+    res.send('プロフィール')
 })
 
-app.post('/auth',(req,res)=>{
-    console.log(req.body)
-    //var loginName=req.body.loginName
-    //var password=req.body.password
-    res.send('認証完了')
+app.post('/auth', (req, res) => {
+    var loginName = req.body.login_name
+    var password = req.body.password
+    console.log(loginName, password)
+
+    var message = "ログイン失敗"
+    if (loginName == process.env.LOGIN_NAME
+        && password == process.env.PASSWORD) {
+            message = "ログイン成功"
+    }
+    res.send(message)
 })
 
+//　サーバ停止: 起動中のターミナルで Ctrl + C
+// サーバ待機（Listen）
 app.listen(PORT, HOST, () => {
     console.log(HOST)
     console.log(PORT)
