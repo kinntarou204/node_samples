@@ -9,6 +9,7 @@ console.log(HOST)
 console.log(PORT)
 
 const app=express()
+app.use(express.static(__dirname + '/public'))
 
 app.get('/',(req,res)=>{
     console.log(req.body)
@@ -20,6 +21,13 @@ app.get('/',(req,res)=>{
 
 app.get('/profil',(req,res)=>{
     res.send('profile')
+})
+
+app.post('/auth',(req,res)=>{
+    console.log(req.body)
+    //var loginName=req.body.loginName
+    //var password=req.body.password
+    res.send('認証完了')
 })
 
 app.listen(PORT, HOST, () => {
