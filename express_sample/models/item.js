@@ -9,3 +9,7 @@ exports.get=()=>{
 }
 
 
+exports.find=()=>{
+    var values=this.get();
+    return values.find((value)=>value.id==id);
+}
