@@ -18,6 +18,13 @@ router.get('/profile', (req, res) => {
     res.send('プロフィール')
 })
 
+
+router.get('/item/:id', (req, res) => {
+    const id = req.params.id
+
+    res.send(id)
+})
+
 // POSTリクエスト
 router.post('/auth', (req, res) => {
     // POSTデータ取得
