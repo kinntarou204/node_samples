@@ -2,7 +2,7 @@
 const fs = require('fs')
 
 // data/items.jsonのパス設定
-exports.filePath = "../data/item.json"
+exports.filePath = "./data/item.json"
 
 // すべてのデータを取得するメソッド
 exports.get = () => {
