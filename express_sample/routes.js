@@ -5,35 +5,13 @@ const router = express.Router()
 // models/item.js を読み込む
 const item = require('./models/item')
 
+// HomeControllerモジュール読み込み
+const HomeController = require('./controllers/HomeController')
+
 // GETリクエストの処理
 // トップページ
-router.get('/', (req, res) => {
-    // リクエストの処理
-    console.log(req.body)
-    console.log(req.url)
-    console.log(req.query)
-    // レスポンスの処理
-    // res.send('Hello!!!!!!')
-    //テンプレート表示（レンダリング）
-    // views/index.ejs を表示
-    res.render('index')
-})
-
-router.get('/profile', (req, res) => {
-    // res.send('プロフィール')
-    var user = {
-        id: 1,
-        name: 'YSE',
-        birthplace: '横浜',
-        hobby: ['旅行', 'グルメ', 'スポーツ'],
-    }
-    var data = {
-        title: 'プロフィール',
-        user: user,
-    }
-    // views/profile.ejs に data を渡して表示
-    res.render('profile', data)
-})
+router.get('/', HomeController.index)
+router.get('/profile', HomeController.profile)
 
 // 商品一覧
 router.get('/item', (req, res) => {
@@ -86,4 +64,4 @@ router.post('/auth', (req, res) => {
 })
 
 // モジュール化
-module.exports = router
+module.exports
