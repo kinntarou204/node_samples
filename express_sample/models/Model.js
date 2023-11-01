@@ -28,3 +28,6 @@ class Model {
 
 //モジュール化
 module.exports = Model
+
+//モジュール化
+module.exports = Model

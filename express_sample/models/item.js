@@ -8,3 +8,9 @@ class Item extends Model {
 
 //モジュール化
 module.exports = Item
+
+
+
+
+
+
