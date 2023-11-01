@@ -3,7 +3,7 @@ const Model = require('./Model')
 
 //Modelクラスを継承
 class Item extends Model {
-    dataFile = "./data/item"
+    dataFile = "./data/items.json"
 }
 
 //モジュール化
