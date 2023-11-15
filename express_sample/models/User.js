@@ -7,8 +7,8 @@ class User extends Model {
         var sql=`INESRT INTO users SET ?;`
         try{
             const con= await mysql.createConnection(db.info);
-            var reult;
-            reult=con.query(sql,post);
+            var result;
+            result=con.query(sql,post);
         }
         catch(error){
 
@@ -16,7 +16,7 @@ class User extends Model {
         finally{
             con.end();
         }
-        return reult;
+        return result;
     }  
     auth = (email, password) => {
         
